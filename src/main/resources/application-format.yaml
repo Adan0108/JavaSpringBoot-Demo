@@ -1,0 +1,18 @@
+server:
+  port: 8007
+
+database:
+  host: host
+  username: username
+  port: 3306
+  password: password
+
+player:
+  age: 41
+  address: 123 Main St, Springfield
+  maps: {k1 : v1 , k2 : v2}
+  lists:
+    -list1
+    -list2
+  isActive: true
+  birth: 2024/08/08

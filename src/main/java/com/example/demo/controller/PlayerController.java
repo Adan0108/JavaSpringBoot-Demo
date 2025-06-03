@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class PlayerController {
 
-    @Value("${player.username}")
-    private String PlayerName;
-
-    @Value("${player.age}")
-    private int PlayerAge;
-
-    @Value("${player.address}")
-    private String PlayerAddress;
-
-    @GetMapping("/v1/api/player/1")
-    public String getInforPlayer(){
-        return PlayerName + " " + PlayerAge + " " + PlayerAddress;
-    }
+//    @Value("${player.username}")
+//    private String PlayerName;
+//
+//    @Value("${player.age}")
+//    private int PlayerAge;
+//
+//    @Value("${player.address}")
+//    private String PlayerAddress;
+//
+//    @GetMapping("/v1/api/player/1")
+//    public String getInforPlayer(){
+//        return PlayerName + " " + PlayerAge + " " + PlayerAddress;
+//    }
 
 }

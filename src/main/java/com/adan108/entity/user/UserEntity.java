@@ -7,7 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 @Data
 @Entity
-@Table(name = "java user 001")
+@Table(name = "java_user_001")
 @DynamicInsert
 @DynamicUpdate
 public class UserEntity {

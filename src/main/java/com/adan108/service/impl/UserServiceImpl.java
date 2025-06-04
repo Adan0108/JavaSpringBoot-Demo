@@ -20,7 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> getAllUsers() {
+    public UserEntity findByUserNameAndUserEmail(String userName, String userEmail) {
+        return userRepository.findByUserNameAndUserEmail(userName, userEmail);
+    }
+
+    @Override
+    public List<UserEntity> findAllUsers() {
         return userRepository.findAll();
     }
+
 }

@@ -4,6 +4,8 @@ import com.adan108.entity.user.UserEntity;
 import com.adan108.repository.UserRepository;
 import com.adan108.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +27,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> findAllUsers() {
-        return userRepository.findAll();
+    public Page<UserEntity> findAllUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<UserEntity> findByUserName(String username, Pageable pageable) {
+        return userRepository.findByUserNameContaining(username,pageable);
     }
 
 }

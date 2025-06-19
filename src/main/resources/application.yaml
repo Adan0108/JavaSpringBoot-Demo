@@ -18,6 +18,23 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comment: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: xxxx@gmail.com
+    password: xxxx
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: "*"
+        debug: true
+
 
 #  profiles:
 #    active: pro

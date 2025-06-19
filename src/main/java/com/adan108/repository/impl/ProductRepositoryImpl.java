@@ -2,30 +2,31 @@ package com.adan108.repository.impl;
 
 import com.adan108.entity.ProductEntity;
 import com.adan108.repository.ProductRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
-    @Override
-    public ProductEntity createProduct(ProductEntity product){
-        ProductEntity productEntity = new ProductEntity();
-        productEntity.setId(1L);
-        productEntity.setProductName("Adan108 Create");
-        productEntity.setProductPrice(new BigDecimal("21.8"));
+    @PersistenceContext
+    private EntityManager entityManager;
 
-        return productEntity;
+    @Override
+    public ProductEntity createProduct(ProductEntity product) {
+        // Persist the ProductEntity (and, because orders are already saved and
+        // this is the owning side of the @ManyToMany, JPA will insert the join rows)
+        entityManager.persist(product);
+        return product;
     }
 
     @Override
-    public List<ProductEntity> findAllProducts(){
-        ProductEntity productEntity = new ProductEntity();
-        productEntity.setId(1L);
-        productEntity.setProductName("Adan108");
-        productEntity.setProductPrice(new BigDecimal("21.8"));
-        return List.of(productEntity);
+    public List<ProductEntity> findAllProducts() {
+        // Fetch all products (with their orders eager-loaded)
+        return entityManager
+                .createQuery("SELECT p FROM ProductEntity p", ProductEntity.class)
+                .getResultList();
     }
 }
